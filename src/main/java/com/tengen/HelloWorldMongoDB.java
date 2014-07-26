@@ -16,7 +16,6 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
 import com.mongodb.QueryBuilder;
 import com.mongodb.ServerAddress;
 
@@ -117,23 +116,6 @@ public class HelloWorldMongoDB
 			dbCursor.close();
 		}
 	}
-	
-	public void finalExam() throws UnknownHostException
-	{
-		 MongoClient c =  new MongoClient(new MongoClientURI("mongodb://localhost"));
-         DB db = c.getDB("test");
-         DBCollection animals = db.getCollection("animals");
-
-         BasicDBObject animal = new BasicDBObject("animal", "monkey");
-
-         animals.insert(animal);
-         animal.removeField("animal");
-         animal.append("animal", "cat");
-         animals.insert(animal);
-         animal.removeField("animal");
-         animal.append("animal", "lion");
-         animals.insert(animal);
-	}
 	/**
 	 * @param args
 	 * @throws UnknownHostException 
@@ -141,8 +123,7 @@ public class HelloWorldMongoDB
 	public static void main(String[] args) throws UnknownHostException 
 	{
 		HelloWorldMongoDB hello = new HelloWorldMongoDB();
-		hello.finalExam();
-		System.out.println("Done");
+		hello.deleteLowestHomeWorkGrades();
 		/*DBCursor dbCursor = null;
 		try
 		{
